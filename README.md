@@ -1,7 +1,7 @@
 
 # Ritual Filter Mod for Rimworld
 
-Steam workshop link: <https://steamcommunity.com/sharedfiles/filedetails/?id=XXX>
+Steam workshop link: <https://steamcommunity.com/sharedfiles/filedetails/?id=3731965187>
 
 ## Quick about
 

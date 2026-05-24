@@ -76,7 +76,7 @@ Adding to existing save is safe. Removing from existing save is also safe.
 
 [hr][/hr]
 
-[url=https://github.com/zwei2stein/weapontraitfiddler-mod] source code [/url] 
+[url=https://github.com/zwei2stein/ritualfilter-mod] source code [/url] 
 
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3651274426] my other mods [/url] 
 
