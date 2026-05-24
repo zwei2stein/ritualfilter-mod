@@ -1,0 +1,87 @@
+[h1]Ritual Filter[/h1]
+
+When you are picking participants for rituals, it can be bothersome with huge colony. Some rituals (like anomaly or medal awards) kinda need that one specific pawn.
+
+[h2]Features[/h2] 
+
+This mod lets you to gray out/higlight pawns in ritual selection dialog to easily identify the ones you want participating in special slots.
+
+[list]
+    [*]Simple search - type part of pawns name
+    [*]More complex searches - look for pawns with traits, passions, etc ...
+[/list]
+
+[hr][/hr]
+
+[h2]Search syntax[/h2]
+
+Simple search is just typing part of pawns name. For example [code]bel[/code] looks for pawns that have "bel" in name, like Belle or Mirabel. Note that whole pawns name is searched, so pawns with weird surname can get highlighted.
+
+You can do more complex searches ty chaining several statements with space. Space meaning "and". For example [code]passion:cooking age>18[/code] - this one highlights adult pawns with passion for cooking.
+
+If something has space in name, like trait "Hard worker", you may use underscore [code]_[/code] to replace space. [code]trait:Hard worker[/code] would search for pawn with trait "Hard" and name that has "worker" in it, [code]trait:hard_worker[/code] would look for pawn with actual Hard worker trait.
+
+Everything is case-insensitive. Both [code]PROTEIN[/code] and [code]protein[/code] will look for pawn with unfortuname name Protein.
+
+[table]
+    [tr]
+        [th]Prefix[/th]
+        [th]Effect[/th]
+    [/tr]
+    [tr]
+        [td][code]passion:[/code][/td]
+        [td]Pawn has any passion for skill. Search must be exact name. [code]passion:mining[/code] looks for a pawn with one or two flame passion to mining.[/td]
+    [/tr]
+    [tr]
+        [td][code]!passion:[/code][/td]
+        [td]Pawn has no passion for skill. Search must be exact name. [code]!passion:cooking[/code] looks for a pawns with no passion for cooking.[/td]
+    [/tr]
+    [tr]
+        [td][code]trait:[/code][/td]
+        [td]Pawn has given trait. Search must be exact name. [code]trait:tough[/code] looks for a pawn with tough trait.[/td]
+    [/tr]
+    [tr]
+        [td][code]!trait:[/code][/td]
+        [td]Pawn has given trait. Search must be exact name. [code]!trait:Psychically_deaf[/code] looks for a pawns that are not psychically deaf.[/td]
+    [/tr]
+    [tr]
+        [td][code]age>[/code][/td]
+        [td]Pawn is older than X. Search must be number. [code]age>12[/code] looks for a pawns are not children anymore.[/td]
+    [/tr]
+    [tr]
+        [td][code]age<[/code][/td]
+        [td]Pawn is younger than X. Search must be number. [code]age<4[/code] looks for babies.[/td]
+    [/tr]
+    [tr]
+        [td][code]hediff:[/code][/td]
+        [td]Pawn has health condition or implant. Search can be only part of hediff name. [code]hediff:pregnant[/code] looks for a pawns are expecting a child.[/td]
+    [/tr]
+    [tr]
+        [td][code]!hediff:[/code][/td]
+        [td]Pawn does not have health condition or implant. Search can be only part of hediff name. [code]!hediff:archotech_eye[/code] looks for babies.[/td]
+    [/tr]
+    [tr]
+        [td]anything else[/td]
+        [td]Part of pawns name.[/td]
+    [/tr]    
+[/table]
+
+[hr][/hr]
+
+[h2]Mod compatibility[/h2] 
+
+Will work with modded rituals.
+
+Adding to existing save is safe. Removing from existing save is also safe.
+
+[hr][/hr]
+
+[url=https://github.com/zwei2stein/weapontraitfiddler-mod] source code [/url] 
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3651274426] my other mods [/url] 
+
+[hr][/hr]
+
+[h2]Thanks[/h2]
+
+A lot of thanks to rimworld modding discord for help.

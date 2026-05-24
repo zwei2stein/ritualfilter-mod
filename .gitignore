@@ -1,0 +1,6 @@
+/Assemblies/*
+/Source/RitualFilter/packages/*
+/Source/RitualFilter/bin/*
+/Source/RitualFilter/obj/*
+/Source/RitualFilter/.idea/*
+Source/RitualFilter/RitualFilter.sln.DotSettings.user
