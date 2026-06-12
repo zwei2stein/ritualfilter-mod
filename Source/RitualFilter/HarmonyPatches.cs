@@ -12,10 +12,13 @@ namespace RitualFilter
         static void Prefix(ref RectDivider layout)
         {
             var row = layout.NewRow(Text.LineHeight);
-            var col1 = row.NewCol(layout.Rect.width - (18f + 4f), marginOverride: new float?(4.0f));
+            var col0  = row.NewCol(18f, marginOverride: new float?(0.0f));
+            var col1 = row.NewCol(layout.Rect.width - 2 * (18f + 4f), marginOverride: new float?(4.0f));
             var col2 = row.NewCol(18f, marginOverride: new float?(0.0f));
+
+            Widgets.DrawTextureFitted(col0, TexButton.Search, 1f);
             
-            RitualFilterModStatic.CurrentFilter = Widgets.TextEntryLabeled(col1, "RitualFilterModName_Field_Filter_Name".Translate(), RitualFilterModStatic.CurrentFilter);
+            RitualFilterModStatic.CurrentFilter = Widgets.TextField(col1, RitualFilterModStatic.CurrentFilter);
             
             if (Widgets.ButtonImage(col2, TexButton.CloseXSmall, tooltip:"RitualFilterModName_Tooltip_Clear".Translate()))
             {

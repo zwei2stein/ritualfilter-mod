@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -116,12 +117,18 @@ namespace RitualFilter
                 }
                 else
                 {
-                    if (!pawn.Name.ToStringFull.ToLower().Contains(filterItem.Replace('_', ' ')))
+                    if (!ConstainsIgnoreDiacritics(pawn.Name.ToStringFull.ToLower(), filterItem.Replace('_', ' ')))
                         return false;
                 }
             }
 
             return true;
+        }
+        
+        private static bool ConstainsIgnoreDiacritics(string text, string contained)
+        {
+            var options = CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols | CompareOptions.IgnoreNonSpace;
+            return -1 != CultureInfo.InvariantCulture.CompareInfo.IndexOf(text, contained, options);
         }
         
         private static SkillRecord FindSkill(Pawn pawn, string skillName)

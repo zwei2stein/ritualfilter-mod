@@ -3,8 +3,6 @@
 
     <RitualFilterModName>Ritual Filter</RitualFilterModName>
 
-    <RitualFilterModName_Field_Filter_Name>Filter: </RitualFilterModName_Field_Filter_Name>
-
     <RitualFilterModName_Tooltip_Clear>Clear filter</RitualFilterModName_Tooltip_Clear>
 
     <RitualFilterModName_Message_FilteredOut>Filtered out</RitualFilterModName_Message_FilteredOut>
