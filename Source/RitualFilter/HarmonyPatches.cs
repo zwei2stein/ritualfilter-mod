@@ -13,17 +13,21 @@ namespace RitualFilter
         {
             var row = layout.NewRow(Text.LineHeight);
             var col0  = row.NewCol(18f, marginOverride: new float?(0.0f));
-            var col1 = row.NewCol(layout.Rect.width - 2 * (18f + 4f), marginOverride: new float?(4.0f));
+            var col1 = row.NewCol(layout.Rect.width - 3 * (18f + 4f), marginOverride: new float?(4.0f));
             var col2 = row.NewCol(18f, marginOverride: new float?(0.0f));
+            var col3 = row.NewCol(18f, marginOverride: new float?(0.0f));
 
             Widgets.DrawTextureFitted(col0, TexButton.Search, 1f);
+            TooltipHandler.TipRegionByKey(col0, "RitualFilter_Help_Tooltip");
             
             RitualFilterModStatic.CurrentFilter = Widgets.TextField(col1, RitualFilterModStatic.CurrentFilter);
+            TooltipHandler.TipRegionByKey(col1, "RitualFilter_Help_Tooltip");
             
             if (Widgets.ButtonImage(col2, TexButton.CloseXSmall, tooltip:"RitualFilterModName_Tooltip_Clear".Translate()))
             {
                 RitualFilterModStatic.CurrentFilter = "";
             }
+            
 
         }
     }

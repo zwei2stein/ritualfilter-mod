@@ -14,35 +14,35 @@ namespace RitualFilter
 
             foreach (var filterItem in filter)
             {
-                if (filterItem.StartsWith("passion:"))
+                if (filterItem.StartsWith("passion:") || filterItem.StartsWith("p:"))
                 {
                     var skillName = filterItem.Split(':')[1];
                     var skill = FindSkill(pawn, skillName);
 
                     if (skill != null && skill.passion == Passion.None)
                         return false;
-                } else if (filterItem.StartsWith("!passion:"))
+                } else if (filterItem.StartsWith("!passion:") || filterItem.StartsWith("!p:"))
                 {
                     var skillName = filterItem.Split(':')[1];
                     var skill = FindSkill(pawn, skillName);
 
                     if (skill != null && skill.passion != Passion.None)
                         return false;
-                } else if (filterItem.StartsWith("trait:"))
+                } else if (filterItem.StartsWith("trait:") || filterItem.StartsWith("t:"))
                 {
                     var traitName = filterItem.Split(':')[1];
                     var trait = FindTrait(pawn, traitName);
 
                     if (trait == null)
                         return false;
-                } else if (filterItem.StartsWith("!trait:"))
+                } else if (filterItem.StartsWith("!trait:") || filterItem.StartsWith("!t:"))
                 {
                     var traitName = filterItem.Split(':')[1];
                     var trait = FindTrait(pawn, traitName);
 
                     if (trait != null)
                         return false;
-                } else if (filterItem.StartsWith("age>"))
+                } else if (filterItem.StartsWith("age>") || filterItem.StartsWith("a>"))
                 {
                     try
                     {
@@ -56,7 +56,7 @@ namespace RitualFilter
                     {
                         //Forgive formatting sins
                     }
-                } else if (filterItem.StartsWith("age<"))
+                } else if (filterItem.StartsWith("age<") || filterItem.StartsWith("a<"))
                 {
                     try
                     {
@@ -70,18 +70,32 @@ namespace RitualFilter
                     {
                         //Forgive formatting sins
                     }
-                } else if (filterItem.StartsWith("hediff:"))
+                } else if (filterItem.StartsWith("hediff:") || filterItem.StartsWith("h:"))
                 {
                     var hediffName = filterItem.Split(':')[1];
 
-                    if (!Enumerable.Any(pawn.health.hediffSet.hediffs, hediff => hediff.Label.ToLower().Replace(' ', '_').Contains(hediffName.ToLower())))
+                    if (!Enumerable.Any(pawn.health.hediffSet.hediffs, hediff => ConstainsIgnoreDiacritics(hediff.Label.ToLower().Replace(' ', '_'),hediffName.ToLower())))
                         return false;
 
-                } else if (filterItem.StartsWith("!hediff:"))
+                } else if (filterItem.StartsWith("!hediff:") || filterItem.StartsWith("!h:"))
                 {
                     var hediffName = filterItem.Split(':')[1];
 
-                    if (Enumerable.Any(pawn.health.hediffSet.hediffs, hediff => hediff.Label.ToLower().Replace(' ', '_').Contains(hediffName.ToLower())))
+                    if (Enumerable.Any(pawn.health.hediffSet.hediffs, hediff => ConstainsIgnoreDiacritics(hediff.Label.ToLower().Replace(' ', '_'),hediffName.ToLower())))
+                        return false;
+                    
+                } else if (filterItem.StartsWith("ability:") || filterItem.StartsWith("ab:"))
+                {
+                    var abilityName = filterItem.Split(':')[1];
+                    
+                    if (!Enumerable.Any(pawn.abilities.AllAbilitiesForReading, ability => ConstainsIgnoreDiacritics(ability.def.label.ToLower().Replace(' ', '_'),abilityName.ToLower())))
+                        return false;
+                    
+                } else if (filterItem.StartsWith("!ability:") || filterItem.StartsWith("!ab:"))
+                {
+                    var abilityName = filterItem.Split(':')[1];
+                    
+                    if (Enumerable.Any(pawn.abilities.AllAbilitiesForReading, ability => ConstainsIgnoreDiacritics(ability.def.label.ToLower().Replace(' ', '_'),abilityName.ToLower())))
                         return false;
 
                 } else if (filterItem.Contains(">"))

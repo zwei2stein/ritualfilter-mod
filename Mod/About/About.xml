@@ -6,7 +6,7 @@
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
-    <modVersion>1.1</modVersion>
+    <modVersion>1.2</modVersion>
     <modDependencies>
         <li>
             <packageId>brrainz.harmony</packageId>
@@ -14,5 +14,5 @@
             <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
         </li>
     </modDependencies>
-    <description>Adds ability to filter pawns when selecting then for ritual particitaion.</description>
+    <description>Adds ability to highlight pawns when selecting then for ritual particitaion.</description>
 </ModMetaData>
