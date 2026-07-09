@@ -1,27 +1,27 @@
 [h1]Ritual Filter[/h1]
 
-When you are picking participants for rituals, it can be bothersome with huge colony. Some rituals (like anomaly or medal awards) kinda need that one specific pawn.
+When you are picking participants for rituals, it can be bothersome with a huge colony. Some rituals (like anomaly or medal awards) kinda need that one specific pawn.
 
-[h2]Features[/h2] 
+[h2]Features[/h2]
 
-This mod lets you to gray out/higlight pawns in ritual selection dialog to easily identify the ones you want participating in special slots.
+This mod lets you gray out/highlight pawns in the ritual selection dialog to easily identify the ones you want to participate in special slots.
 
 [list]
-    [*]Simple search - type part of pawns name
-    [*]More complex searches - look for pawns with traits, passions, etc ...
+    [*]Simple search - type part of a pawn's name
+    [*]More complex searches - look for pawns with traits, passions, etc...
 [/list]
 
 [hr][/hr]
 
 [h2]Search syntax[/h2]
 
-Simple search is just typing part of pawns name. For example [b]bel[/b] looks for pawns that have "bel" in name, like Belle or Mirabel. Note that whole pawns name is searched, so pawns with weird surname can get highlighted.
+Simple search is just typing part of a pawn's name. For example [b]bel[/b] looks for pawns that have "bel" in their name, like Belle or Mirabel. Note that the whole pawn's name is searched, so pawns with weird surnames can get highlighted.
 
-You can do more complex searches ty chaining several statements with space. Space meaning "and". For example [b]passion:cooking age>18[/b] - this one highlights adult pawns with passion for cooking.
+You can do more complex searches by chaining several statements with a space. Space means "and". For example [b]passion:cooking age>18[/b] - This highlights adult pawns with a passion for cooking.
 
-If something has space in name, like trait "Hard worker", you may use underscore [b]_[/b] to replace space. [b]trait:Hard worker[/b] would search for pawn with trait "Hard" and name that has "worker" in it, [b]trait:hard_worker[/b] would look for pawn with actual Hard worker trait.
+If something has a space in its name, like the trait "Hard worker", you may use an underscore [b]_[/b] to replace a space. [b]trait:Hard worker[/b] would search for a pawn with the trait "Hard" and a name that has "worker" in it, [b]trait:hard_worker[/b] would look for a pawn with the actual Hard worker trait.
 
-Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look for pawn with unfortuname name Protein.
+Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look for a pawn with an unfortunate name Protein.
 
 [table]
     [tr]
@@ -30,66 +30,66 @@ Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look
     [/tr]
     [tr]
         [td][b]passion:[/b], [b]p:[/b][/td]
-        [td]Pawn has any passion for skill. Search must be exact name. [b]passion:mining[/b] looks for a pawn with one or two flame passion to mining.[/td]
+        [td]A pawn has any passion for a skill. Search must be an exact name. [b]passion:mining[/b] looks for a pawn with one or two flame passion for mining.[/td]
     [/tr]
     [tr]
         [td][b]!passion:[/b], [b]!p:[/b][/td]
-        [td]Pawn has no passion for skill. Search must be exact name. [b]!passion:cooking[/b] looks for a pawns with no passion for cooking.[/td]
+        [td]A pawn has no passion for a skill. Search must be an exact name. [b]!passion:cooking[/b] looks for pawns with no passion for cooking.[/td]
     [/tr]
     [tr]
         [td][b]trait:[/b], [b]t:[/b][/td]
-        [td]Pawn has given trait. Search must be exact name. [b]trait:tough[/b] looks for a pawn with tough trait.[/td]
+        [td]A pawn has the given trait. Search must be an exact name. [b]trait:tough[/b] looks for a pawn with the tough trait.[/td]
     [/tr]
     [tr]
         [td][b]!trait:[/b], [b]!t:[/b][/td]
-        [td]Pawn has given trait. Search must be exact name. [b]!trait:Psychically_deaf[/b] looks for a pawns that are not psychically deaf.[/td]
+        [td]A pawn does not have the given trait. Search must be an exact name. [b]!trait:Psychically_deaf[/b] looks for pawns that are not psychically deaf.[/td]
     [/tr]
     [tr]
         [td][b]age>[/b], [b]a>[/b][/td]
-        [td]Pawn is older than X. Search must be number. [b]age>12[/b] looks for a pawns are not children anymore.[/td]
+        [td]A pawn is older than X. Search must be a number. [b]age>12[/b] looks for pawns who are not children anymore.[/td]
     [/tr]
     [tr]
         [td][b]age<[/b], [b]a<[/b][/td]
-        [td]Pawn is younger than X. Search must be number. [b]age<4[/b] looks for babies.[/td]
+        [td]A pawn is younger than X. Search must be a number. [b]age<4[/b] looks for babies.[/td]
     [/tr]
     [tr]
         [td][b]hediff:[/b], [b]h:[/b][/td]
-        [td]Pawn has health condition or implant. Search can be only part of hediff name. [b]hediff:pregnant[/b] looks for a pawns are expecting a child.[/td]
+        [td]A pawn has a health condition or implant. Search can be only part of a hediff name. [b]hediff:pregnant[/b] looks for pawns who are expecting a child.[/td]
     [/tr]
     [tr]
         [td][b]!hediff:[/b], [b]!h:[/b][/td]
-        [td]Pawn does not have health condition or implant. Search can be only part of hediff name. [b]!hediff:archotech_eye[/b] looks for pawns without archotech eye implant.[/td]
+        [td]A pawn does not have a health condition or implant. Search can be only part of a hediff name. [b]!hediff:archotech_eye[/b] looks for pawns without an archotech eye implant.[/td]
     [/tr]
     [tr]
         [td][b]ability:[/b], [b]ab:[/b][/td]
-        [td]Pawn has ability. Search term can be only part of ability name. [b]ab:[/b] looks for .[/td]
+        [td]A pawn has an ability. Search term can be only part of an ability name. [b]ab:[/b] looks for abilities.[/td]
     [/tr]
     [tr]
         [td][b]!ability:[/b], [b]!ab:[/b][/td]
-        [td]Pawn does not have ability. SSearch term can be only part of ability name. [b]!abiliy:[/b] looks for .[/td]
+        [td]A pawn does not have an ability. Search term can be only part of an ability name. [b]!ability:[/b] looks for abilities.[/td]
     [/tr]
     [tr]
         [td]anything else[/td]
-        [td]Part of pawns name.[/td]
-    [/tr]    
+        [td]Part of a pawn's name.[/td]
+    [/tr]
 [/table]
 
 [hr][/hr]
 
-[h2]Mod compatibility[/h2] 
+[h2]Mod Compatibility[/h2]
 
-Will work with modded rituals.
+Works with modded rituals.
 
-Adding to existing save is safe. Removing from existing save is also safe.
+Adding to an existing save is safe. Removing from an existing save is also safe.
 
 [hr][/hr]
 
-[url=https://github.com/zwei2stein/ritualfilter-mod] source code [/url] 
+[url=https://github.com/zwei2stein/ritualfilter-mod]Source Code[/url]
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3651274426] my other mods [/url] 
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3651274426]My Other Mods[/url]
 
 [hr][/hr]
 
 [h2]Thanks[/h2]
 
-A lot of thanks to rimworld modding discord for help.
+Many thanks to the RimWorld Modding Discord for their help.

@@ -7,14 +7,14 @@
 
     <RitualFilterModName_Message_FilteredOut>Filtered out</RitualFilterModName_Message_FilteredOut>
 
-    <RitualFilter_Help_Tooltip>Entered text will be matched againt pawns name.
+    <RitualFilter_Help_Tooltip>Entered text will be matched against pawn names.
 
 Examples of more advanced uses:
-• h:preg ➤ pegnant pawns
+• h:preg ➤ pregnant pawns
 • a&gt;12 ➤ pawns older than 12
-• t:tough ➤ pawns with tought trait
-• ab: ➤ pawns with ability
-• mining&lt;10 ➤ pawns mining skill lower than 10
+• t:tough ➤ pawns with tough trait
+• ab: ➤ pawns with abilities
+• mining&lt;10 ➤ pawns with mining skill lower than 10
 • !p:melee ➤ pawns without melee passion</RitualFilter_Help_Tooltip>
 
 </LanguageData>
