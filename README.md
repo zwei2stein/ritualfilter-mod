@@ -10,7 +10,7 @@ Steam workshop link: <https://steamcommunity.com/sharedfiles/filedetails/?id=373
 ![](/Publishing/01_basic.png)
 ![](/Publishing/02_support.png)
 ![](/Publishing/03_format.png)
-
+![](/Publishing/04_presets.png)
 
 ## License
 

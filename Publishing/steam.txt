@@ -9,6 +9,7 @@ This mod lets you gray out/highlight pawns in the ritual selection dialog to eas
 [list]
     [*]Simple search - type part of a pawn's name
     [*]More complex searches - look for pawns with traits, passions, etc...
+    [*]Saved presets: create presets in the mod settings for more complex searches.
 [/list]
 
 [hr][/hr]
@@ -22,6 +23,8 @@ You can do more complex searches by chaining several statements with a space. Sp
 If something has a space in its name, like the trait "Hard worker", you may use an underscore [b]_[/b] to replace a space. [b]trait:Hard worker[/b] would search for a pawn with the trait "Hard" and a name that has "worker" in it, [b]trait:hard_worker[/b] would look for a pawn with the actual Hard worker trait.
 
 Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look for a pawn with an unfortunate name Protein.
+
+[img=https://i.imgur.com/WUv1NSf.png]
 
 [table]
     [tr]
