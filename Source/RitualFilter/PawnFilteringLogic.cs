@@ -16,28 +16,28 @@ namespace RitualFilter
             {
                 if (filterItem.StartsWith("passion:") || filterItem.StartsWith("p:"))
                 {
-                    var skillName = filterItem.Split(':')[1];
+                    var skillName = filterItem.Split(new[] { ':' }, 2)[1];
                     var skill = FindSkill(pawn, skillName);
 
                     if (skill != null && skill.passion == Passion.None)
                         return false;
                 } else if (filterItem.StartsWith("!passion:") || filterItem.StartsWith("!p:"))
                 {
-                    var skillName = filterItem.Split(':')[1];
+                    var skillName = filterItem.Split(new[] { ':' }, 2)[1];
                     var skill = FindSkill(pawn, skillName);
 
                     if (skill != null && skill.passion != Passion.None)
                         return false;
                 } else if (filterItem.StartsWith("trait:") || filterItem.StartsWith("t:"))
                 {
-                    var traitName = filterItem.Split(':')[1];
+                    var traitName = filterItem.Split(new[] { ':' }, 2)[1];
                     var trait = FindTrait(pawn, traitName);
 
                     if (trait == null)
                         return false;
                 } else if (filterItem.StartsWith("!trait:") || filterItem.StartsWith("!t:"))
                 {
-                    var traitName = filterItem.Split(':')[1];
+                    var traitName = filterItem.Split(new[] { ':' }, 2)[1];
                     var trait = FindTrait(pawn, traitName);
 
                     if (trait != null)
@@ -52,9 +52,9 @@ namespace RitualFilter
                             return false;
                         }
                     }
-                    catch (FormatException)
+                    catch (Exception ex) when (ex is FormatException || ex is OverflowException)
                     {
-                        //Forgive formatting sins
+                        //Forgive formatting sins and crash attempts
                     }
                 } else if (filterItem.StartsWith("age<") || filterItem.StartsWith("a<"))
                 {
@@ -66,36 +66,36 @@ namespace RitualFilter
                             return false;
                         }
                     }
-                    catch (FormatException)
+                    catch (Exception ex) when (ex is FormatException || ex is OverflowException)
                     {
-                        //Forgive formatting sins
+                        //Forgive formatting sins and crash attempts
                     }
                 } else if (filterItem.StartsWith("hediff:") || filterItem.StartsWith("h:"))
                 {
-                    var hediffName = filterItem.Split(':')[1];
+                    var hediffName = filterItem.Split(new[] { ':' }, 2)[1];
 
-                    if (!Enumerable.Any(pawn.health.hediffSet.hediffs, hediff => ConstainsIgnoreDiacritics(hediff.Label.ToLower().Replace(' ', '_'),hediffName.ToLower())))
+                    if (FindHediff(pawn, hediffName) == null)
                         return false;
 
                 } else if (filterItem.StartsWith("!hediff:") || filterItem.StartsWith("!h:"))
                 {
-                    var hediffName = filterItem.Split(':')[1];
+                    var hediffName = filterItem.Split(new[] { ':' }, 2)[1];
 
-                    if (Enumerable.Any(pawn.health.hediffSet.hediffs, hediff => ConstainsIgnoreDiacritics(hediff.Label.ToLower().Replace(' ', '_'),hediffName.ToLower())))
+                    if (FindHediff(pawn, hediffName) != null)
                         return false;
                     
                 } else if (filterItem.StartsWith("ability:") || filterItem.StartsWith("ab:"))
                 {
-                    var abilityName = filterItem.Split(':')[1];
+                    var abilityName = filterItem.Split(new[] { ':' }, 2)[1];
                     
-                    if (!Enumerable.Any(pawn.abilities.AllAbilitiesForReading, ability => ConstainsIgnoreDiacritics(ability.def.label.ToLower().Replace(' ', '_'),abilityName.ToLower())))
+                    if (FindAbility(pawn, abilityName) == null)
                         return false;
                     
                 } else if (filterItem.StartsWith("!ability:") || filterItem.StartsWith("!ab:"))
                 {
-                    var abilityName = filterItem.Split(':')[1];
+                    var abilityName = filterItem.Split(new[] { ':' }, 2)[1];
                     
-                    if (Enumerable.Any(pawn.abilities.AllAbilitiesForReading, ability => ConstainsIgnoreDiacritics(ability.def.label.ToLower().Replace(' ', '_'),abilityName.ToLower())))
+                    if (FindAbility(pawn, abilityName) != null)
                         return false;
 
                 } else if (filterItem.Contains(">"))
@@ -109,9 +109,9 @@ namespace RitualFilter
                         if (skill != null && skill.GetLevel() <= value)
                             return false;
                     }
-                    catch (FormatException)
+                    catch (Exception ex) when (ex is FormatException || ex is OverflowException)
                     {
-                        //Forgive formatting sins
+                        //Forgive formatting sins and crash attempts
                     }
                 } else if (filterItem.Contains("<"))
                 {
@@ -124,22 +124,22 @@ namespace RitualFilter
                         if (skill != null && skill.GetLevel() >= value)
                             return false;
                     }
-                    catch (FormatException)
+                    catch (Exception ex) when (ex is FormatException || ex is OverflowException)
                     {
-                        //Forgive formatting sins
-                    }                    
+                        //Forgive formatting sins and crash attempts
+                    }                 
                 }
                 else
                 {
-                    if (!ConstainsIgnoreDiacritics(pawn.Name.ToStringFull.ToLower(), filterItem.Replace('_', ' ')))
+                    if (!ContainsIgnoreDiacritics(pawn.Name.ToStringFull.ToLower(), filterItem.Replace('_', ' ')))
                         return false;
                 }
             }
 
             return true;
         }
-        
-        private static bool ConstainsIgnoreDiacritics(string text, string contained)
+
+        private static bool ContainsIgnoreDiacritics(string text, string contained)
         {
             var options = CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols | CompareOptions.IgnoreNonSpace;
             return -1 != CultureInfo.InvariantCulture.CompareInfo.IndexOf(text, contained, options);
@@ -147,12 +147,37 @@ namespace RitualFilter
         
         private static SkillRecord FindSkill(Pawn pawn, string skillName)
         {
-            return Enumerable.FirstOrDefault(pawn.skills.skills, skill => skill.def.skillLabel == skillName);
+            if (pawn?.skills?.skills == null)
+                return null;
+            
+            return Enumerable.FirstOrDefault(pawn.skills.skills, skill => string.Equals(skill.def.skillLabel, skillName, StringComparison.OrdinalIgnoreCase));
         }
         
         private static Trait FindTrait(Pawn pawn, string traitName)
         {
-            return Enumerable.FirstOrDefault(pawn.story.traits.allTraits, trait => trait.Label.Replace(' ', '_').ToLower() == traitName);
+            if (pawn?.story?.traits?.allTraits == null)
+                return null;
+            
+            return Enumerable.FirstOrDefault(pawn.story.traits.allTraits, trait => string.Equals(trait.Label.Replace(' ', '_'), traitName, StringComparison.OrdinalIgnoreCase));
+        }
+        
+        private static Hediff FindHediff(Pawn pawn, string hediffName)
+        {
+            if (pawn?.health?.hediffSet?.hediffs == null)
+                return null;
+            
+            return Enumerable.FirstOrDefault(pawn.health.hediffSet.hediffs,
+                hediff => ContainsIgnoreDiacritics(hediff.Label.ToLower().Replace(' ', '_'), hediffName.ToLower()));
+        }
+
+        private static Ability FindAbility(Pawn pawn, string abilityName)
+        {
+            if  (pawn?.abilities == null)
+                return null;
+            
+            return Enumerable.FirstOrDefault(pawn.abilities.AllAbilitiesForReading,
+                ability => ContainsIgnoreDiacritics(ability.def.label.ToLower().Replace(' ', '_'),
+                    abilityName.ToLower()));
         }
 
     }

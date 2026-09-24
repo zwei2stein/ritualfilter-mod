@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=950">
+    <title>Ritual Filter - Features</title>
+    <style>
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+
+        body {
+            width: 950px;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1b2838;
+            color: #c6d4df;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           SECTIONS
+           ============================================ */
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, rgba(198, 212, 223, 0.1) 0%, rgba(198, 212, 223, 0.05) 100%);
+            border-left: 3px solid #ffd78c;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .section-header .icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .section-header .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffd78c;
+        }
+
+        /* ============================================
+           TABLES
+           ============================================ */
+
+        .feature-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: rgba(27, 40, 56, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px rgba(198, 212, 223, 0.1),
+            0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(198, 212, 223, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(198, 212, 223, 0.1);
+        }
+
+        .feature-table td {
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #c6d4df;
+            border-bottom: 1px solid rgba(198, 212, 223, 0.05);
+            vertical-align: middle;
+        }
+
+        .feature-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .feature-table tr:hover td {
+            background: rgba(198, 212, 223, 0.03);
+        }
+
+        .feature-table tr:nth-child(even) td {
+            background: rgba(27, 40, 56, 0.3);
+        }
+
+        .feature-table tr:nth-child(even):hover td {
+            background: rgba(198, 212, 223, 0.05);
+        }
+
+        .feature-table .col-graphic {
+            width: 64px;
+            text-align: center;
+            background: rgba(198, 212, 223, 0.02);
+        }
+
+        .feature-table .col-graphic img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 4px rgba(198, 212, 223, 0.5));
+        }
+
+        .feature-table .col-description {
+            width: 35%;
+        }
+
+        .feature-table .col-syntax {
+            width: 25%;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            color: #ffd78c;
+        }
+
+        .feature-table .col-examples {
+            width: auto;
+        }
+
+        .feature-table .col-examples code {
+            background: rgba(198, 212, 223, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 12px;
+            color: #ffd78c;
+        }
+
+        /* ============================================
+           CONTENT ELEMENTS
+           ============================================ */
+
+        .feature-name {
+            font-weight: 600;
+            color: #ffd78c;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .feature-description {
+            color: rgba(198, 212, 223, 0.8);
+            font-size: 13.5px;
+        }
+
+        .example-text {
+            font-size: 13px;
+            color: rgba(198, 212, 223, 0.9);
+        }
+
+        .example-text code {
+            color: #ffd78c;
+            background: rgba(198, 212, 223, 0.1);
+            padding: 1px 4px;
+            border-radius: 2px;
+        }
+
+        /* ============================================
+           INFO BOXES
+           ============================================ */
+
+        .info-box {
+            background: rgba(198, 212, 223, 0.05);
+            border-left: 3px solid #ffd78c;
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 14px;
+            color: rgba(198, 212, 223, 0.9);
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: #ffd78c;
+        }
+
+        .compatibility-note {
+            font-size: 12px;
+            color: rgba(198, 212, 223, 0.6);
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        .compatibility-note::before {
+            content: '\26A1';
+            margin-right: 6px;
+            color: #ffd78c;
+        }
+
+        /* ============================================
+           DIVIDERS
+           ============================================ */
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(198, 212, 223, 0.2) 50%, transparent 100%);
+            margin: 25px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="divider"></div>
+
+<!-- ========================================
+     BASIC SEARCH
+     ======================================== -->
+<div class="section">
+    <div class="section-header">
+        <div class="icon">
+            <img src="../../../rimworld_art/UI/Widgets/SearchBar_Container.png" alt="">
+        </div>
+        <h2>Basic Name Search</h2>
+    </div>
+
+    <table class="feature-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Syntax</th>
+            <th>Examples</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Commands/SelectAllLinked.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Simple Name Search</div>
+                <div class="feature-description">
+                    Searches for text in pawn names (case-insensitive). Matches any part of the full name.
+                </div>
+            </td>
+            <td class="col-syntax">
+                text
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>bel</code> - Finds Belle, Mirabel<br>
+                            <code>john</code> - Finds John, Johnny, Yojohn
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/Prisoner.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Underscore as Space</div>
+                <div class="feature-description">
+                    Use underscores to search for names with spaces without needing quotes.
+                </div>
+            </td>
+            <td class="col-syntax">
+                text_with_underscores
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>john_doe</code> - Finds John Doe
+                        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========================================
+     PASSION FILTERS
+     ======================================== -->
+<div class="section">
+    <div class="section-header">
+        <div class="icon">
+            <img src="../../../rimworld_art/UI/Icons/Study.png" alt="">
+        </div>
+        <h2>Passion Filters</h2>
+    </div>
+
+    <table class="feature-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Syntax</th>
+            <th>Examples</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Commands/Analyze.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Has Passion</div>
+                <div class="feature-description">
+                    Filters for pawns that have <strong>any</strong> passion (minor or major) for the specified skill.
+                </div>
+            </td>
+            <td class="col-syntax">
+                passion:skill<br>p:skill
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>passion:mining</code> - Miners with passion<br>
+                            <code>p:artistic</code> - Artistic pawns
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/PawnHostility.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">No Passion</div>
+                <div class="feature-description">
+                    Filters for pawns that have <strong>no</strong> passion for the specified skill.
+                </div>
+            </td>
+            <td class="col-syntax">
+                !passion:skill<br>!p:skill
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>!passion:cooking</code> - No cooking passion<br>
+                            <code>!p:melee</code> - Not melee-focused
+                        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========================================
+     TRAIT FILTERS
+     ======================================== -->
+<div class="section">
+    <div class="section-header">
+        <div class="icon">
+            <img src="../../../rimworld_art/UI/Icons/UnwaveringlyLoyal.png" alt="">
+        </div>
+        <h2>Trait Filters</h2>
+    </div>
+
+    <table class="feature-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Syntax</th>
+            <th>Examples</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/Slavery.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Has Trait</div>
+                <div class="feature-description">
+                    Filters for pawns that have the specified trait. Search is exact match.
+                </div>
+            </td>
+            <td class="col-syntax">
+                trait:traitname<br>t:traitname
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>trait:tough</code> - Tough pawns<br>
+                            <code>t:brawler</code> - Brawlers
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/CorpseStockpileZone.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">No Trait</div>
+                <div class="feature-description">
+                    Filters for pawns that do <strong>not</strong> have the specified trait.
+                </div>
+            </td>
+            <td class="col-syntax">
+                !trait:traitname<br>!t:traitname
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>!trait:pyromaniac</code> - Not pyromaniacs<br>
+                            <code>!t:nudist</code> - Clothed pawns
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/language.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Multi-word Traits</div>
+                <div class="feature-description">
+                    Use underscores to replace spaces in trait names with multiple words.
+                </div>
+                <div class="compatibility-note">Required for traits like "Hard worker", "Night owl", etc.</div>
+            </td>
+            <td class="col-syntax">
+                trait:trait_name
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>trait:hard_worker</code><br>
+                            <code>trait:night_owl</code>
+                        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========================================
+     AGE FILTERS
+     ======================================== -->
+<div class="section">
+    <div class="section-header">
+        <div class="icon">
+            <img src="../../../rimworld_art/UI/Icons/DevelopmentalStages/Adult.png" alt="">
+        </div>
+        <h2>Age Filters</h2>
+    </div>
+
+    <table class="feature-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Syntax</th>
+            <th>Examples</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/DevelopmentalStages/Baby.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Older Than</div>
+                <div class="feature-description">
+                    Filters for pawns older than the specified age (in biological years).
+                </div>
+            </td>
+            <td class="col-syntax">
+                age>number<br>a>number
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>age>12</code> - Not children (<strong>13+</strong>)<br>
+                            <code>a>18</code> - Adults only
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/DevelopmentalStages/Child.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Younger Than</div>
+                <div class="feature-description">
+                    Filters for pawns younger than the specified age (in biological years).
+                </div>
+            </td>
+            <td class="col-syntax">
+                age<number<br>a<number
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>age<4</code> - Babies and toddlers<br>
+                            <code>a<13</code> - Children only
+                        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========================================
+     HEDIFF FILTERS
+     ======================================== -->
+<div class="section">
+    <div class="section-header">
+        <div class="icon">
+            <img src="../../../rimworld_art/UI/Icons/MoveSpeedBonus.png" alt="">
+        </div>
+        <h2>Health Condition Filters</h2>
+    </div>
+
+    <table class="feature-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Syntax</th>
+            <th>Examples</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/SurgicalInspection.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Has Hediff</div>
+                <div class="feature-description">
+                    Filters for pawns that have a health condition matching the search term.
+                </div>
+                <div class="compatibility-note">Search can be partial - matches any hediff containing the term.</div>
+            </td>
+            <td class="col-syntax">
+                hediff:text<br>h:text
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>hediff:pregnant</code> - Pregnant pawns<br>
+                            <code>h:scar</code> - Has any scar<br>
+                            <code>hediff:fracture</code> - Broken bones
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Commands/KillHeart.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">No Hediff</div>
+                <div class="feature-description">
+                    Filters for pawns that do <strong>not</strong> have a health condition matching the search term.
+                </div>
+            </td>
+            <td class="col-syntax">
+                !hediff:text<br>!h:text
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>!hediff:archotech_eye</code> - No archotech eyes<br>
+                            <code>!h:alcohol</code> - Not drunk/addicted
+                        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========================================
+     ABILITY FILTERS
+     ======================================== -->
+<div class="section">
+    <div class="section-header">
+        <div class="icon">
+            <img src="../../../rimworld_art/UI/Commands/WarTrumpet.png" alt="">
+        </div>
+        <h2>Ability Filters</h2>
+    </div>
+
+    <table class="feature-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Syntax</th>
+            <th>Examples</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Commands/TerrorRoar.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Has Ability</div>
+                <div class="feature-description">
+                    Filters for pawns that have an ability matching the search term.
+                </div>
+                <div class="compatibility-note">Search can be partial - matches any ability containing the term.</div>
+            </td>
+            <td class="col-syntax">
+                ability:text<br>ab:text
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>ability:</code> - Any ability at all<br>
+                            <code>ab:psychic</code> - Psychic abilities<br>
+                            <code>ability:inspire</code> - Inspire ability
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Icons/UndergroundEmergence.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">No Ability</div>
+                <div class="feature-description">
+                    Filters for pawns that do <strong>not</strong> have an ability matching the search term.
+                </div>
+            </td>
+            <td class="col-syntax">
+                !ability:text<br>!ab:text
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>!ability:</code> - No abilities at all<br>
+                            <code>!ab:word_of</code> - No Word of... abilities
+                        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========================================
+     SKILL FILTERS
+     ======================================== -->
+<div class="section">
+    <div class="section-header">
+        <div class="icon">
+            <img src="../../../rimworld_art/UI/Icons/Study.png" alt="">
+        </div>
+        <h2>Skill Level Filters</h2>
+    </div>
+
+    <table class="feature-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Syntax</th>
+            <th>Examples</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Commands/DesirePower.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Skill Greater Than</div>
+                <div class="feature-description">
+                    Filters for pawns with a skill level <strong>higher than</strong> the specified value.
+                </div>
+            </td>
+            <td class="col-syntax">
+                skill>number
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>mining>10</code> - Miners level 11+<br>
+                            <code>shooting>5</code> - Decent shooters
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Commands/Halt.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Skill Less Than</div>
+                <div class="feature-description">
+                    Filters for pawns with a skill level <strong>lower than</strong> the specified value.
+                </div>
+            </td>
+            <td class="col-syntax">
+                skill<number
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>cooking<5</code> - Bad cooks<br>
+                            <code>melee<10</code> - Not great fighters
+                        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========================================
+     COMBINED FILTERS
+     ======================================== -->
+<div class="section">
+    <div class="section-header">
+        <div class="icon">
+            <img src="../../../rimworld_art/UI/Commands/SelectAllLinked.png" alt="">
+        </div>
+        <h2>Combining Filters</h2>
+    </div>
+
+    <div class="info-box">
+        <strong>Pro Tip:</strong> You can mix and match any filter types. For example:
+        <code>age>12 trait:tough passion:mining mining>8</code> finds tough adult miners with mining passion who have level 9+ mining skill.
+    </div>
+
+    <table class="feature-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Syntax</th>
+            <th>Examples</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Commands/LinkStorageSettings.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Multiple Conditions</div>
+                <div class="feature-description">
+                    Chain multiple filters together. All conditions must be satisfied.
+                </div>
+            </td>
+            <td class="col-syntax">
+                filter1 filter2 filter3...
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>age>12 trait:tough</code><br>
+                            <code>passion:cooking !trait:nudist</code>
+                        </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-graphic">
+                <img src="../../../rimworld_art/UI/Commands/JumpTo.png" alt="">
+            </td>
+            <td class="col-description">
+                <div class="feature-name">Complex Search</div>
+                <div class="feature-description">
+                    Combine different filter types for precise pawn selection.
+                </div>
+            </td>
+            <td class="col-syntax">
+                type:value type:value...
+            </td>
+            <td class="col-examples">
+                        <span class="example-text">
+                            <code>a>18 p:art ab: shooting>10</code><br>
+                            <code>t:hard_worker !h:pregnant age>12</code>
+                        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="divider"></div>
+
+</body>
+</html>
