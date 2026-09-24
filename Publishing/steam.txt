@@ -24,7 +24,7 @@ If something has a space in its name, like the trait "Hard worker", you may use 
 
 Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look for a pawn with an unfortunate name Protein.
 
-[img=https://i.imgur.com/WUv1NSf.png]
+[img=https://i.imgur.com/nHQ4O2s.jpeg]
 
 [table]
     [tr]
@@ -36,7 +36,7 @@ Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look
         [td]A pawn has any passion for a skill. Search must be an exact name. [b]passion:mining[/b] looks for a pawn with one or two flame passion for mining.[/td]
     [/tr]
     [tr]
-        [td][b]!passion:[/b], [b]!p:[/b][/td]
+        [td][b]!passion:[/b], [b]!p:[/b], [b]-passion:[/b], [b]-p:[/b][/td]
         [td]A pawn has no passion for a skill. Search must be an exact name. [b]!passion:cooking[/b] looks for pawns with no passion for cooking.[/td]
     [/tr]
     [tr]
@@ -44,7 +44,7 @@ Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look
         [td]A pawn has the given trait. Search must be an exact name. [b]trait:tough[/b] looks for a pawn with the tough trait.[/td]
     [/tr]
     [tr]
-        [td][b]!trait:[/b], [b]!t:[/b][/td]
+        [td][b]!trait:[/b], [b]!t:[/b], [b]-trait:[/b], [b]-t:[/b][/td]
         [td]A pawn does not have the given trait. Search must be an exact name. [b]!trait:Psychically_deaf[/b] looks for pawns that are not psychically deaf.[/td]
     [/tr]
     [tr]
@@ -60,7 +60,7 @@ Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look
         [td]A pawn has a health condition or implant. Search can be only part of a hediff name. [b]hediff:pregnant[/b] looks for pawns who are expecting a child.[/td]
     [/tr]
     [tr]
-        [td][b]!hediff:[/b], [b]!h:[/b][/td]
+        [td][b]!hediff:[/b], [b]!h:[/b], [b]-hediff:[/b], [b]-h:[/b][/td]
         [td]A pawn does not have a health condition or implant. Search can be only part of a hediff name. [b]!hediff:archotech_eye[/b] looks for pawns without an archotech eye implant.[/td]
     [/tr]
     [tr]
@@ -68,7 +68,7 @@ Everything is case-insensitive. Both [b]PROTEIN[/b] and [b]protein[/b] will look
         [td]A pawn has an ability. Search term can be only part of an ability name. [b]ab:[/b] looks for abilities.[/td]
     [/tr]
     [tr]
-        [td][b]!ability:[/b], [b]!ab:[/b][/td]
+        [td][b]!ability:[/b], [b]!ab:[/b], [b]-ability:[/b], [b]-ab:[/b][/td]
         [td]A pawn does not have an ability. Search term can be only part of an ability name. [b]!ability:[/b] looks for abilities.[/td]
     [/tr]
     [tr]

@@ -21,7 +21,7 @@ namespace RitualFilter
 
                     if (skill != null && skill.passion == Passion.None)
                         return false;
-                } else if (filterItem.StartsWith("!passion:") || filterItem.StartsWith("!p:"))
+                } else if (filterItem.StartsWith("!passion:") || filterItem.StartsWith("!p:") || filterItem.StartsWith("-passion:") || filterItem.StartsWith("-p:"))
                 {
                     var skillName = filterItem.Split(new[] { ':' }, 2)[1];
                     var skill = FindSkill(pawn, skillName);
@@ -35,7 +35,7 @@ namespace RitualFilter
 
                     if (trait == null)
                         return false;
-                } else if (filterItem.StartsWith("!trait:") || filterItem.StartsWith("!t:"))
+                } else if (filterItem.StartsWith("!trait:") || filterItem.StartsWith("!t:") || filterItem.StartsWith("-trait:") || filterItem.StartsWith("-t:"))
                 {
                     var traitName = filterItem.Split(new[] { ':' }, 2)[1];
                     var trait = FindTrait(pawn, traitName);
@@ -77,7 +77,7 @@ namespace RitualFilter
                     if (FindHediff(pawn, hediffName) == null)
                         return false;
 
-                } else if (filterItem.StartsWith("!hediff:") || filterItem.StartsWith("!h:"))
+                } else if (filterItem.StartsWith("!hediff:") || filterItem.StartsWith("!h:") || filterItem.StartsWith("-hediff:") || filterItem.StartsWith("-h:"))
                 {
                     var hediffName = filterItem.Split(new[] { ':' }, 2)[1];
 
@@ -91,7 +91,7 @@ namespace RitualFilter
                     if (FindAbility(pawn, abilityName) == null)
                         return false;
                     
-                } else if (filterItem.StartsWith("!ability:") || filterItem.StartsWith("!ab:"))
+                } else if (filterItem.StartsWith("!ability:") || filterItem.StartsWith("!ab:") || filterItem.StartsWith("-ability:") || filterItem.StartsWith("-ab:"))
                 {
                     var abilityName = filterItem.Split(new[] { ':' }, 2)[1];
                     
