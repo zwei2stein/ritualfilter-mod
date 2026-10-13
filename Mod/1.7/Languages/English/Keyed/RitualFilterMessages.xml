@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+    <RitualFilterModName>Ritual Filter</RitualFilterModName>
+    
+    <RitualFilter_Presets_Tooltip>Presets</RitualFilter_Presets_Tooltip>
+
+    <RitualFilterModName_Tooltip_Clear>Clear filter</RitualFilterModName_Tooltip_Clear>
+
+    <RitualFilterModName_Message_FilteredOut>Filtered out</RitualFilterModName_Message_FilteredOut>
+
+    <RitualFilter_Help_Tooltip>Entered text will be matched against pawn names.
+
+Examples of more advanced uses:
+• h:preg ➤ pregnant pawns
+• a&gt;12 ➤ pawns older than 12
+• t:tough ➤ pawns with tough trait
+• ab:call ➤ pawns with abilities like Warcall
+• mining&lt;10 ➤ pawns with mining skill lower than 10
+• !p:melee ➤ pawns without melee passion</RitualFilter_Help_Tooltip>
+    
+    <RitualFilter_Presets_FindWhere>You can configure filter presets in the mod settings.</RitualFilter_Presets_FindWhere>
+    
+    <RitualFilterModName_Presets_Title>Filter presets</RitualFilterModName_Presets_Title>
+    
+    <RitualFilterModName_Presets_HowTo>Filters presets are separated by newlines. ⏎
+Click the magnifying glass next to the filter in the ritual dialog to select a preset.</RitualFilterModName_Presets_HowTo>
+
+</LanguageData>
