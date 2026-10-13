@@ -49,7 +49,6 @@ namespace RitualFilter
                 RitualFilterModStatic.CurrentFilter = "";
             }
             
-
         }
     }
     
@@ -59,8 +58,11 @@ namespace RitualFilter
         static bool Prefix(Pawn pawn, out TaggedString reason, ref bool __result)
         {
             if (string.IsNullOrEmpty(RitualFilterModStatic.CurrentFilter))
+            {
+                reason = null;
                 return true;
-            
+            }
+
             if (!PawnFilteringLogic.PawnIsValid(pawn))
             {
                 __result = false;
@@ -68,6 +70,7 @@ namespace RitualFilter
                 return false;
             }
             // otherwise, do the normal logic
+            reason = null;
             return true;
         }
     }
@@ -78,8 +81,11 @@ namespace RitualFilter
         static bool Prefix(Pawn pawn, out TaggedString reason, ref bool __result)
         {
             if (string.IsNullOrEmpty(RitualFilterModStatic.CurrentFilter))
+            {
+                reason = null;
                 return true;
-            
+            }
+
             if (!PawnFilteringLogic.PawnIsValid(pawn))
             {
                 __result = false;
@@ -87,6 +93,7 @@ namespace RitualFilter
                 return false;
             }
             // otherwise, do the normal logic
+            reason = null;
             return true;
         }
     }
